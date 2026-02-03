@@ -1,71 +1,87 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Duduhsma</title>
+
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f172a;
-      color: white;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #ff7a00, #ff9a2f);
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
+      color: #fff;
     }
 
     .container {
-      text-align: center;
-      max-width: 400px;
       width: 100%;
+      max-width: 420px;
+      text-align: center;
       padding: 20px;
     }
 
     h1 {
-      font-size: 2.2em;
-      margin-bottom: 10px;
+      font-size: 3rem;
+      margin-bottom: 20px;
     }
 
-    p {
-      font-size: 1em;
-      margin-bottom: 25px;
-      color: #cbd5f5;
+    .subtitle {
+      font-size: 1.2rem;
+      margin-bottom: 50px;
+      line-height: 1.4;
     }
 
-    a {
+    .buttons a {
       display: block;
+      background: #111;
+      color: #fff;
       text-decoration: none;
-      background: #2563eb;
-      color: white;
-      padding: 14px;
-      margin: 10px 0;
-      border-radius: 8px;
-      font-weight: bold;
+      padding: 16px;
+      margin-bottom: 18px;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      transition: 0.3s;
     }
 
-    a:hover {
-      background: #1d4ed8;
+    .buttons a:hover {
+      background: #000;
+      transform: scale(1.03);
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 0.9rem;
+      opacity: 0.8;
     }
   </style>
 </head>
+
 <body>
   <div class="container">
     <h1>Duduhsma</h1>
 
-    <p>Desenvolvimento de habilidades em projetos digitais e iniciativas sociais.</p>
+    <p class="subtitle">
+      Desenvolvimento de habilidades em projetos digitais e iniciativas sociais.
+    </p>
 
-    <a href="https://www.instagram.com/duduhsofc?igsh=MThxcWZ1dmFubzVrcg==" target="_blank">
-      Instagram
-    </a>
+    <div class="buttons">
+      <a href="https://www.instagram.com/duduhsofc?igsh=MThxcWZ1dmFubzVrcg==" target="_blank">Instagram</a>
+      <a href="mailto:Caduholandadesousa@gmail.com">E-mail</a>
+      <a href="https://www.tiktok.com/@kaduholanda_" target="_blank">TikTok</a>
+    </div>
 
-    <a href="mailto:Caduholandadesousa@gmail.com">
-      E-mail
-    </a>
-
-    <a href="https://www.tiktok.com/@kaduholanda_" target="_blank">
-      TikTok
-    </a>
+    <footer>
+      © Duduhsma
+    </footer>
   </div>
 </body>
 </html>
