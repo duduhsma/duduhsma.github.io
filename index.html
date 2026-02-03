@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Duduhsma</title>
+<title>Duduhsma | Projetos & Iniciativas</title>
 
 <link rel="preload" as="image" href="foto.jpg">
 
@@ -15,9 +15,6 @@ min-height:100vh;
 background:linear-gradient(180deg,#f0a04b,#f6b26b);
 background-size:400% 400%;
 animation:bgMove 22s ease infinite;
-display:flex;
-justify-content:center;
-padding:env(safe-area-inset-top) 16px env(safe-area-inset-bottom);
 color:#fff;
 }
 
@@ -27,99 +24,93 @@ color:#fff;
 100%{background-position:0% 50%}
 }
 
-body.dark{
-background:linear-gradient(180deg,#24160c,#120b06);
-}
-
 .container{
-width:100%;
 max-width:430px;
+margin:auto;
+padding:env(safe-area-inset-top) 16px 40px;
 text-align:center;
-padding-top:42px;
 }
 
-h1{
-font-size:44px;
-font-weight:900;
-margin-bottom:24px;
-animation:fadeDown .9s ease forwards;
-}
-
-@keyframes fadeDown{
-from{opacity:0;transform:translateY(-25px)}
-to{opacity:1;transform:translateY(0)}
-}
+h1{font-size:44px;font-weight:900;margin-bottom:24px}
 
 .perfil{
-width:190px;
-height:190px;
-border-radius:50%;
-object-fit:cover;
-margin:0 auto 26px;
-box-shadow:0 25px 60px rgba(0,0,0,.45);
-animation:fadeScale 1.1s ease forwards;
+width:190px;height:190px;border-radius:50%;
+object-fit:cover;margin-bottom:26px;
+box-shadow:0 25px 60px rgba(0,0,0,.45)
 }
 
-@keyframes fadeScale{
-from{opacity:0;transform:scale(.9)}
-to{opacity:1;transform:scale(1)}
-}
+p.main{font-size:21px;line-height:1.6;margin-bottom:60px}
 
-p{
-font-size:21px;
-line-height:1.6;
-margin-bottom:60px;
-padding:0 10px;
-opacity:.96;
-animation:fadeUp 1.2s ease forwards;
-}
-
-@keyframes fadeUp{
-from{opacity:0;transform:translateY(25px)}
-to{opacity:1;transform:translateY(0)}
-}
-
-.buttons{
-display:flex;
-flex-direction:column;
-gap:24px;
-}
+.buttons{display:flex;flex-direction:column;gap:24px;margin-bottom:80px}
 
 .btn{
-padding:24px;
-font-size:20px;
-font-weight:600;
-border-radius:26px;
-text-decoration:none;
-color:#fff;
-backdrop-filter:blur(16px);
+padding:24px;font-size:20px;font-weight:600;
+border-radius:26px;text-decoration:none;color:#fff;
 background:rgba(0,0,0,.38);
-box-shadow:0 14px 35px rgba(0,0,0,.4);
-transition:transform .15s ease,box-shadow .15s ease;
+backdrop-filter:blur(16px);
+box-shadow:0 14px 35px rgba(0,0,0,.4)
 }
-
-.btn:active{transform:scale(.96)}
 
 .instagram{box-shadow:0 0 35px rgba(255,90,140,.6)}
 .tiktok{box-shadow:0 0 35px rgba(0,220,255,.55)}
 .projects{box-shadow:0 0 35px rgba(255,200,120,.55)}
 .email{box-shadow:0 0 30px rgba(255,255,255,.3)}
 
-.highlight{
-animation:pulse 1.8s infinite;
+section{
+background:rgba(0,0,0,.25);
+backdrop-filter:blur(12px);
+border-radius:28px;
+padding:28px;
+margin-bottom:60px;
+text-align:left
 }
 
-@keyframes pulse{
-0%{transform:scale(1)}
-50%{transform:scale(1.03)}
-100%{transform:scale(1)}
+section h2{font-size:26px;margin-bottom:16px}
+section p{font-size:16px;line-height:1.6;margin-bottom:14px}
+
+.pix-box{
+background:rgba(255,255,255,.14);
+padding:18px;
+border-radius:18px;
+text-align:center;
+margin-top:18px
 }
 
-footer{
-margin-top:60px;
-font-size:13px;
-opacity:.75;
+.copy-btn{
+margin-top:14px;
+padding:14px;
+border-radius:14px;
+background:#00000055;
+color:#fff;
+border:none;
+font-weight:700;
+width:100%
 }
+
+.gallery{
+display:grid;
+grid-template-columns:1fr;
+gap:16px;
+margin-top:20px
+}
+
+.card{
+background:rgba(255,255,255,.12);
+padding:16px;
+border-radius:16px
+}
+
+.transparency{
+font-size:14px;
+opacity:.9;
+background:rgba(0,0,0,.35);
+padding:16px;
+border-radius:16px;
+margin-top:20px
+}
+
+footer{text-align:center;font-size:14px;opacity:.85}
+canvas{margin-top:20px}
 </style>
 </head>
 
@@ -127,51 +118,78 @@ opacity:.75;
 <div class="container">
 
 <h1>Duduhsma</h1>
-
-<img src="foto.jpg" alt="Foto de Duduhsma" class="perfil">
-
-<p>Desenvolvimento de habilidades em projetos digitais e iniciativas sociais.</p>
+<img src="foto.jpg" class="perfil">
+<p class="main">Desenvolvimento de habilidades em projetos digitais e iniciativas sociais.</p>
 
 <div class="buttons">
-<a href="https://www.instagram.com/duduhsofc" target="_blank" class="btn instagram" data-id="instagram">Instagram</a>
-<a href="https://www.tiktok.com/@kaduholanda_" target="_blank" class="btn tiktok" data-id="tiktok">TikTok</a>
-<a href="#" class="btn projects" data-id="projects">Projetos / Iniciativas</a>
+<a href="https://www.instagram.com/duduhsofc" class="btn instagram" data-id="instagram">Instagram</a>
+<a href="https://www.tiktok.com/@kaduholanda_" class="btn tiktok" data-id="tiktok">TikTok</a>
+<a href="#projects" class="btn projects">Projetos / Iniciativas</a>
 <a href="mailto:Caduholandadesousa@gmail.com" class="btn email" data-id="email">E-mail</a>
 </div>
 
-<footer>© Duduhsma</footer>
+<section id="projects">
+<h2>Projetos & Iniciativas</h2>
+
+<p>
+Projetos sociais voltados ao apoio de famílias em situação de vulnerabilidade,
+especialmente em datas comemorativas como Dia das Crianças, Natal
+e outros períodos importantes.
+</p>
+
+<div class="gallery">
+<div class="card">🎁 Dia das Crianças — ações solidárias e doações</div>
+<div class="card">🎄 Natal Solidário — apoio alimentar e itens essenciais</div>
+<div class="card">🤝 Ações futuras — novas iniciativas em planejamento</div>
+</div>
+
+<div class="pix-box">
+<strong>Apoie este projeto via PIX</strong><br><br>
+99 98492-3448<br>
+Mercado Pago<br>
+Carlos Eduardo Holanda de Sousa
+
+<button class="copy-btn" onclick="copyPix()">Copiar chave PIX</button>
+</div>
+
+<div class="transparency">
+🛡️ <strong>Selo de Transparência</strong><br><br>
+Todas as contribuições são destinadas exclusivamente
+ao apoio das ações descritas neste site.
+Os projetos são planejados e executados dentro das possibilidades reais,
+com responsabilidade e respeito.
+</div>
+</section>
+
+<footer>
+📊 Cliques nos botões
+<canvas id="chart" width="300" height="180"></canvas>
+</footer>
 
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-// Modo escuro automático
-const hour=new Date().getHours();
-const prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;
-if(hour>=19||hour<=6||prefersDark){document.body.classList.add('dark');}
-
-// Contador de cliques + destaque automático
-let maxClicks=0,topBtn=null;
-
-document.querySelectorAll('.btn').forEach(btn=>{
-const id=btn.dataset.id;
-const clicks=Number(localStorage.getItem(id)||0);
-if(clicks>maxClicks){maxClicks=clicks;topBtn=btn}
-
-btn.addEventListener('click',()=>{
-localStorage.setItem(id,clicks+1);
-});
-});
-
-if(topBtn){topBtn.classList.add('highlight')}
-
-// Painel oculto
-if(location.hash==="#stats"){
-let stats="📊 ESTATÍSTICAS\n\n";
-document.querySelectorAll('.btn').forEach(b=>{
-stats+=`${b.textContent}: ${localStorage.getItem(b.dataset.id)||0}\n`;
-});
-alert(stats);
+function copyPix(){
+navigator.clipboard.writeText("99984923448");
+alert("Chave PIX copiada!");
 }
+
+const ids=["instagram","tiktok","projects","email"];
+const data=ids.map(id=>Number(localStorage.getItem(id)||0));
+
+new Chart(document.getElementById("chart"),{
+type:"bar",
+data:{
+labels:["Instagram","TikTok","Projetos","E-mail"],
+datasets:[{data,backgroundColor:["#ff5a8c","#00dcff","#ffc878","#ffffff"]}]
+},
+options:{plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}
+});
+
+document.querySelectorAll(".btn[data-id]").forEach(btn=>{
+btn.onclick=()=>localStorage.setItem(btn.dataset.id,(Number(localStorage.getItem(btn.dataset.id)||0)+1));
+});
 </script>
 
 </body>
