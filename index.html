@@ -2,192 +2,187 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Duduhsma | Link Oficial</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Duduhsma</title>
+
+<link rel="preload" as="image" href="foto.jpg">
 
 <style>
-* {
-  box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
 }
 
-body {
-  margin: 0;
-  min-height: 100vh;
-  background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
-  display: flex;
-  justify-content: center;
-  padding: 40px 16px;
-  color: #fff;
+body{
+min-height:100vh;
+background:linear-gradient(180deg,#f0a04b,#f6b26b);
+background-size:400% 400%;
+animation:bgMove 25s ease infinite;
+color:#fff;
 }
 
-.container {
-  width: 100%;
-  max-width: 420px;
-  text-align: center;
+@keyframes bgMove{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
 }
 
-/* TOPO */
-h1 {
-  font-size: 40px;
-  margin-bottom: 6px;
+.container{
+max-width:430px;
+margin:auto;
+padding:env(safe-area-inset-top) 18px 80px;
+text-align:center;
 }
 
-.link-oficial {
-  font-size: 14px;
-  opacity: 0.8;
-  margin-bottom: 28px;
+h1{
+font-size:50px;
+font-weight:900;
+margin-bottom:30px;
 }
 
-/* FOTO */
-.profile {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin: 0 auto 26px;
-  border: 3px solid rgba(255,255,255,0.4);
+.perfil{
+width:220px;
+height:220px;
+border-radius:50%;
+object-fit:cover;
+margin-bottom:32px;
+box-shadow:0 30px 70px rgba(0,0,0,.45);
 }
 
-/* FRASE */
-.frase {
-  font-size: 19px;
-  line-height: 1.5;
-  margin-bottom: 52px;
+.main{
+font-size:24px;
+line-height:1.6;
+margin-bottom:90px;
 }
 
-/* BOTÕES */
-.buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  margin-bottom: 44px;
+.buttons{
+display:flex;
+flex-direction:column;
+gap:30px;
+margin-bottom:80px;
 }
 
-a.btn, button.btn {
-  padding: 17px;
-  border-radius: 16px;
-  text-decoration: none;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  backdrop-filter: blur(12px);
-  box-shadow: 0 10px 28px rgba(0,0,0,0.3);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.btn{
+padding:28px;
+font-size:22px;
+font-weight:600;
+border-radius:30px;
+text-decoration:none;
+color:#fff;
+background:rgba(0,0,0,.35);
+backdrop-filter:blur(16px);
+box-shadow:0 20px 45px rgba(0,0,0,.45);
+transition:transform .2s ease;
 }
 
-a.btn:hover, button.btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 14px 32px rgba(0,0,0,0.4);
+.btn:active{
+transform:scale(.96);
 }
 
-/* CORES */
-.instagram {
-  background: linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+.instagram{box-shadow:0 0 40px rgba(255,90,140,.6);}
+.tiktok{box-shadow:0 0 40px rgba(0,220,255,.55);}
+.email{box-shadow:0 0 30px rgba(255,255,255,.35);}
+.caminho{box-shadow:0 0 40px rgba(255,255,255,.55);}
+
+section{
+background:rgba(0,0,0,.30);
+backdrop-filter:blur(16px);
+border-radius:30px;
+padding:32px 26px;
+text-align:left;
 }
 
-.tiktok {
-  background: linear-gradient(45deg,#00f2ea,#000,#ff0050);
+section h2{
+font-size:28px;
+margin-bottom:22px;
+text-align:center;
 }
 
-.email {
-  background: rgba(255,255,255,0.15);
+section p{
+font-size:18px;
+line-height:1.8;
+margin-bottom:18px;
+white-space:pre-line;
 }
 
-/* TESTEMUNHO */
-.testemunho {
-  max-height: 0;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.5s ease;
-  background: rgba(0,0,0,0.4);
-  border-radius: 18px;
-  padding: 0 24px;
-  text-align: left;
-}
-
-.testemunho.aberto {
-  max-height: 5000px;
-  opacity: 1;
-  transform: translateY(0);
-  padding: 28px 24px;
-}
-
-.testemunho h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-/* FECHAR */
-.fechar {
-  margin-top: 24px;
-  width: 100%;
-  background: rgba(255,255,255,0.15);
-}
-
-/* RODAPÉ */
-.footer {
-  margin-top: 60px;
-  font-size: 13px;
-  opacity: 0.7;
-}
 </style>
 </head>
 
 <body>
 <div class="container">
 
-  <h1>Duduhsma</h1>
-  <div class="link-oficial">Link oficial</div>
+<h1>Duduhsma</h1>
 
-  <img src="foto.jpg" alt="Foto de perfil" class="profile">
+<img src="foto.jpg" class="perfil" alt="Foto Duduhsma">
 
-  <div class="frase">
-    Desenvolvimento de habilidades em projetos digitais e iniciativas sociais.
-  </div>
+<p class="main">
+Link oficial
+</p>
 
-  <div class="buttons">
-    <a class="btn instagram" href="https://www.instagram.com/duduhsofc" target="_blank">
-      Instagram
-    </a>
-
-    <a class="btn tiktok" href="https://www.tiktok.com/@kaduholanda_" target="_blank">
-      TikTok
-    </a>
-
-    <a class="btn email" href="mailto:Caduholandadesousa@gmail.com">
-      E-mail
-    </a>
-
-    <button class="btn email" onclick="toggleTestemunho()">
-      Do meu jeito… ao jeito de Deus
-    </button>
-  </div>
-
-  <div id="testemunho" class="testemunho">
-    <h2>Do meu jeito… ao jeito de Deus</h2>
-    <p>
-      <!-- COLE AQUI O TESTEMUNHO COMPLETO,
-           DO JEITO QUE VOCÊ JÁ MANDOU -->
-    </p>
-
-    <button class="btn fechar" onclick="toggleTestemunho()">
-      Fechar história
-    </button>
-  </div>
-
-  <div class="footer">@duduhsma2026</div>
-
+<div class="buttons">
+<a href="https://www.instagram.com/duduhsofc" class="btn instagram">Instagram</a>
+<a href="https://www.tiktok.com/@kaduholanda_" class="btn tiktok">TikTok</a>
+<a href="#caminho" class="btn caminho">Meu Caminho</a>
+<a href="mailto:Caduholandadesousa@gmail.com" class="btn email">E-mail</a>
 </div>
 
-<script>
-function toggleTestemunho() {
-  const t = document.getElementById("testemunho");
-  t.classList.toggle("aberto");
-}
-</script>
+<section id="caminho">
+<h2>Do meu jeito ao jeito de Deus</h2>
+
+<p>
+Quando eu era pequeno, eu não entendia quase nada sobre religião. Não sabia escolher, não sabia definir fé, não sabia nem o que estava procurando. Eu apenas vivia. Cresci em uma cidade pequena, do interior — pequena em tamanho, mas pesada em histórias. Pouca gente, ruas simples… e ainda assim, coisas que não combinavam com um lugar tão pequeno. Histórias duras. Muitas testemunhas. Muitas marcas. Muitos finais tristes.
+
+Mesmo sem perceber, eu já estava cercado por um ambiente espiritual muito forte. Algo que não se via, mas se sentia. Algo que precisava de intervenção. E Deus, mais uma vez, não chegou atrasado.
+
+Com o passar do tempo, chegou até nós um irmão — que hoje é o nosso pastor — e foi ali que tudo começou a mudar. A primeira igreja nasceu aqui. Não com templo, não com estrutura, mas com pessoas. Os cultos aconteciam dentro das casas dos irmãos. Casas simples, mas cheias da presença de Deus. O pastor foi acolhido, e junto com ele, nasceu uma igreja viva.
+
+Cada culto era diferente. Cada reunião trazia testemunhos fortes, provações difíceis, histórias de luta. Era nítido que o Espírito Santo estava agindo, porque o ambiente precisava disso. Com o tempo, Deus permitiu que o templo fosse levantado. Aquilo que começou pequeno começou a ganhar forma.
+
+E foi nesse meio tempo que algo começou a acontecer dentro de mim.
+
+Mesmo ainda muito novo, eu passei a frequentar os cultos. E a cada culto, algo me tocava. Eu não sabia explicar, mas sentia. Era como se Deus estivesse me chamando, mesmo quando eu ainda não entendia o que era um chamado. Antes mesmo de aceitar Cristo, eu já sonhava. Já sentia. Já era inquieto por dentro.
+
+Até que chegou o dia em que eu aceitei Cristo como meu suficiente Salvador.
+
+Mas aceitar não significava entender tudo. Eu era muito novo. Eu não sabia exatamente o que podia, o que não podia, o que significava negar a mim mesmo. Eu aceitei, comecei a congregar, comecei a aprender… mas ainda vivia dividido. A fé estava ali, mas a maturidade ainda não.
+
+Foi só quando cheguei entre os meus 15 e 16 anos que tudo começou a fazer sentido de verdade. Foi quando me batizei. Foi quando entendi que aceitar Cristo não era só levantar a mão, mas mudar a vida. Antes mesmo disso, eu já tinha algumas experiências espirituais, algumas visões, e comecei a perceber que o mundo espiritual era real, intenso e sério. Deus estava me mostrando coisas — e eu ainda estava aprendendo a compreender.
+
+Mas nada me preparou para o momento que viria depois.
+
+Meu primo, meu priminho… tinha apenas dois anos quando faleceu. Ele era tudo pra mim. Eu tinha um cuidado enorme por ele, e ele, tão pequeno, gostava muito de mim. A perda dele não foi só dor. Foi um vazio. Foi um silêncio. Foi como se algo dentro de mim tivesse sido arrancado.
+
+Eu cheguei ao fundo do poço.
+
+Os dias passavam, mas a dor não diminuía. Três meses depois, eu fiz uma oração que saiu do fundo da alma. Pedi a Deus apenas uma chance de sonhar com ele. Eu sonhei duas vezes, mas os sonhos eram confusos, bagunçados… como o meu coração estava. Nada fazia sentido.
+
+Em um momento de desespero, eu me ajoelhei e fiz uma oração perigosa. Eu pedi para Deus me levar para o céu, para que eu pudesse vê-lo. Naquele instante, eu não queria morrer — eu só não queria mais sentir aquela dor. Eu já não via motivos para continuar.
+
+Hoje eu entendo: aquela oração não era para ser atendida daquele jeito. Não era a minha hora.
+
+Algum tempo depois, em uma tarde comum, no meio da semana, eu saí para resolver algumas coisas. Na volta para casa, tudo mudou em segundos. Sofri um acidente de moto gravíssimo. No retorno para pegar a BR, bati em outro motociclista. Logo atrás de mim vinha uma carreta. Por muito pouco, eu não fui atingido.
+
+Por muito pouco… eu não fui embora.
+
+Passei pelo processo de recuperação. E foi só depois, quando o corpo começou a sarar, que a alma começou a entender. Aquilo não foi acaso. Foi livramento. Foi resposta de oração. Foi Deus dizendo: “Eu ouvi você. Mas ainda não é o seu tempo.”
+
+Foi como se Deus tivesse me parado no meio do caminho para me ensinar o valor da vida que Ele me deu.
+
+Depois disso, tive mais uma experiência difícil de explicar — algo entre sonho e visão — mas o sentimento era claro: Deus estava comigo. Ele sempre esteve.
+
+Hoje, olhando para trás, eu entendo muito mais. Entendo os sonhos, as visões, as inquietações desde a infância. Entendo que mesmo quando eu vivia do meu jeito, Deus já estava escrevendo a minha história do jeito d’Ele.
+
+Hoje eu busco mais. Porque eu sei: sem Deus, eu não sou quem sou. E com certeza, não sou mais quem eu era.
+
+Se eu posso deixar algo para quem lê esse testemunho, é isso: acreditem no chamado de vocês. Todos nós temos um. Deus sabe a hora exata de agir. Às vezes a dor faz parte do processo, mas nunca é o fim da história.
+
+Essa é a minha história.
+Do meu jeito… ao jeito de Deus. 🙏🧭🤍
+</p>
+</section>
+
+</div>
 </body>
 </html>
