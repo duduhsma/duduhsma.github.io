@@ -15,67 +15,60 @@
 
     body {
       min-height: 100vh;
-      background: linear-gradient(180deg, #f28c28, #f6a64d);
+      background: linear-gradient(180deg, #f28c28, #f6b26b);
       display: flex;
-      flex-direction: column;
+      justify-content: center;
       align-items: center;
+      text-align: center;
       color: #ffffff;
     }
 
-    /* Container principal */
     .container {
       width: 100%;
-      max-width: 500px;
-      text-align: center;
-      padding: 40px 20px;
-      animation: fadeUp 1s ease forwards;
+      max-width: 420px;
+      padding: 40px 20px 80px;
+      animation: fadeUp 1s ease;
     }
 
-    /* Nome */
     h1 {
-      font-size: 52px;
-      font-weight: bold;
-      margin-top: -40px; /* sobe o nome */
+      font-size: 44px;
       margin-bottom: 35px; /* afasta do texto */
+      animation: fadeUp 1.2s ease;
     }
 
-    /* Texto */
     p {
-      font-size: 20px;
-      line-height: 1.6;
-      margin-bottom: 50px;
+      font-size: 20px; /* texto maior */
+      line-height: 1.5;
+      margin-bottom: 70px; /* espaço antes dos botões */
+      animation: fadeUp 1.4s ease;
     }
 
-    /* Botões */
-    .btn {
+    .buttons a {
       display: block;
-      width: 100%;
-      padding: 16px;
-      margin-bottom: 22px;
-      background-color: #111111;
-      color: #ffffff;
+      background: #111;
+      color: #fff;
       text-decoration: none;
-      font-size: 18px;
+      padding: 18px;
+      margin-bottom: 22px; /* espaço entre botões */
       border-radius: 18px; /* mais arredondado */
-      box-shadow: 0 6px 12px rgba(0,0,0,0.25); /* sombra suave */
+      font-size: 18px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.25);
       transition: transform 0.25s ease, box-shadow 0.25s ease;
+      animation: fadeUp 1.6s ease;
     }
 
-    .btn:hover {
+    .buttons a:hover {
       transform: translateY(-4px);
-      box-shadow: 0 10px 18px rgba(0,0,0,0.35);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.35);
     }
 
-    /* Rodapé */
     footer {
-      margin-top: auto;
-      padding-bottom: 40px;
-      padding-top: 120px; /* empurra bem pra baixo */
+      margin-top: 90px; /* joga bem pra baixo */
       font-size: 14px;
       opacity: 0.85;
+      animation: fadeUp 1.8s ease;
     }
 
-    /* Animação elegante */
     @keyframes fadeUp {
       from {
         opacity: 0;
@@ -90,26 +83,32 @@
 </head>
 
 <body>
-
   <div class="container">
+
     <h1>Duduhsma</h1>
 
     <p>
       Desenvolvimento de habilidades em projetos digitais e iniciativas sociais.
     </p>
 
-    <a class="btn" href="https://www.instagram.com/duduhsofc?igsh=MThxcWZ1dmFubzVrcg==" target="_blank">
-      Instagram
-    </a>
+    <div class="buttons">
+      <a href="https://www.instagram.com/duduhsofc?igsh=MThxcWZ1dmFubzVrcg==" target="_blank">
+        Instagram
+      </a>
 
-    <a class="btn" href="mailto:Caduholandadesousa@gmail.com">
-      E-mail
-    </a>
+      <a href="https://tiktok.com/@kaduholanda_" target="_blank">
+        TikTok
+      </a>
+
+      <a href="mailto:Caduholandadesousa@gmail.com">
+        E-mail
+      </a>
+    </div>
+
+    <footer>
+      © Duduhsma
+    </footer>
+
   </div>
-
-  <footer>
-    © Duduhsma
-  </footer>
-
 </body>
 </html>
