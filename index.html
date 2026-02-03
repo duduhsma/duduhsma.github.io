@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Duduhsma | Projetos & Caminho</title>
+<title>Duduhsma</title>
 
 <link rel="preload" as="image" href="foto.jpg">
 
@@ -37,99 +37,53 @@ text-align:center;
 }
 
 h1{
-font-size:48px;
+font-size:50px;
 font-weight:900;
 margin-bottom:30px;
 }
 
 .perfil{
-width:210px;
-height:210px;
+width:220px;
+height:220px;
 border-radius:50%;
 object-fit:cover;
-margin-bottom:30px;
+margin-bottom:32px;
 box-shadow:0 30px 70px rgba(0,0,0,.45);
 }
 
 .main{
-font-size:23px;
+font-size:24px;
 line-height:1.6;
-margin-bottom:80px;
+margin-bottom:90px;
 }
 
 .buttons{
 display:flex;
 flex-direction:column;
-gap:28px;
-margin-bottom:100px;
+gap:30px;
 }
 
 .btn{
-padding:26px;
-font-size:21px;
+padding:28px;
+font-size:22px;
 font-weight:600;
-border-radius:28px;
+border-radius:30px;
 text-decoration:none;
 color:#fff;
 background:rgba(0,0,0,.35);
 backdrop-filter:blur(16px);
-box-shadow:0 18px 40px rgba(0,0,0,.45);
+box-shadow:0 20px 45px rgba(0,0,0,.45);
 transition:transform .2s ease;
 }
 
 .btn:active{
-transform:scale(.97);
+transform:scale(.96);
 }
 
 .instagram{box-shadow:0 0 40px rgba(255,90,140,.6);}
 .tiktok{box-shadow:0 0 40px rgba(0,220,255,.55);}
-.projects{box-shadow:0 0 40px rgba(255,200,120,.55);}
-.faith{box-shadow:0 0 40px rgba(200,255,200,.45);}
-.email{box-shadow:0 0 30px rgba(255,255,255,.3);}
+.email{box-shadow:0 0 30px rgba(255,255,255,.35);}
 
-section{
-background:rgba(0,0,0,.28);
-backdrop-filter:blur(14px);
-border-radius:30px;
-padding:30px;
-margin-bottom:70px;
-text-align:left;
-}
-
-section h2{
-font-size:28px;
-margin-bottom:18px;
-}
-
-section p{
-font-size:17px;
-line-height:1.7;
-margin-bottom:16px;
-}
-
-.gallery{
-display:grid;
-gap:16px;
-margin-top:20px;
-}
-
-.card{
-background:rgba(255,255,255,.14);
-padding:18px;
-border-radius:18px;
-font-size:16px;
-}
-
-footer{
-text-align:center;
-font-size:14px;
-opacity:.85;
-margin-top:40px;
-}
-
-canvas{
-margin-top:20px;
-}
 </style>
 </head>
 
@@ -138,90 +92,18 @@ margin-top:20px;
 
 <h1>Duduhsma</h1>
 
-<img src="foto.jpg" class="perfil">
+<img src="foto.jpg" class="perfil" alt="Foto Duduhsma">
 
 <p class="main">
 Desenvolvimento de habilidades em projetos digitais e iniciativas sociais.
 </p>
 
 <div class="buttons">
-<a href="https://www.instagram.com/duduhsofc" class="btn instagram" data-id="instagram">Instagram</a>
-<a href="https://www.tiktok.com/@kaduholanda_" class="btn tiktok" data-id="tiktok">TikTok</a>
-<a href="#projects" class="btn projects">Projetos / Iniciativas</a>
-<a href="#faith" class="btn faith">Fé & Caminho</a>
-<a href="mailto:Caduholandadesousa@gmail.com" class="btn email" data-id="email">E-mail</a>
+<a href="https://www.instagram.com/duduhsofc" class="btn instagram">Instagram</a>
+<a href="https://www.tiktok.com/@kaduholanda_" class="btn tiktok">TikTok</a>
+<a href="mailto:Caduholandadesousa@gmail.com" class="btn email">E-mail</a>
 </div>
 
-<section id="projects">
-<h2>Projetos & Iniciativas</h2>
-
-<p>
-Projetos sociais voltados ao apoio de famílias em situação de vulnerabilidade,
-especialmente em datas comemorativas como Dia das Crianças, Natal
-e outros períodos importantes.
-</p>
-
-<div class="gallery">
-<div class="card">🎁 Dia das Crianças — ações solidárias e cuidado com famílias</div>
-<div class="card">🎄 Natal Solidário — apoio e atenção em momentos especiais</div>
-<div class="card">🤝 Iniciativas futuras — projetos em planejamento consciente</div>
 </div>
-</section>
-
-<section id="faith">
-<h2>Fé & Caminho</h2>
-
-<p>
-Minha fé cristã é a base de tudo o que estou construindo aqui.
-Acredito em um Deus que cuida, orienta e transforma vidas,
-e que nos chama a amar e servir com responsabilidade.
-</p>
-
-<p>
-Este projeto nasce da fé colocada em prática,
-com passos simples, verdadeiros e possíveis,
-sempre buscando fazer o bem da melhor forma.
-</p>
-
-<p>
-Tudo é feito com oração, propósito
-e confiança de que Deus guia cada etapa do caminho.
-</p>
-</section>
-
-<footer>
-📊 Cliques nos botões
-<canvas id="chart" width="300" height="180"></canvas>
-</footer>
-
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-const ids=["instagram","tiktok","email"];
-const data=ids.map(id=>Number(localStorage.getItem(id)||0));
-
-new Chart(document.getElementById("chart"),{
-type:"bar",
-data:{
-labels:["Instagram","TikTok","E-mail"],
-datasets:[{data,backgroundColor:["#ff5a8c","#00dcff","#ffffff"]}]
-},
-options:{
-plugins:{legend:{display:false}},
-scales:{y:{beginAtZero:true}}
-}
-});
-
-document.querySelectorAll(".btn[data-id]").forEach(btn=>{
-btn.onclick=()=>{
-localStorage.setItem(
-btn.dataset.id,
-(Number(localStorage.getItem(btn.dataset.id)||0)+1)
-);
-};
-});
-</script>
-
 </body>
 </html>
