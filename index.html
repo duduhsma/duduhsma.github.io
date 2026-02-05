@@ -8,6 +8,18 @@
 <link rel="preload" as="image" href="foto.jpg">
 
 <style>
+:root{
+--bg1:#f0a04b;
+--bg2:#f6b26b;
+--text:#ffffff;
+}
+
+body.dark{
+--bg1:#0f0f14;
+--bg2:#1a1a24;
+--text:#ffffff;
+}
+
 *{
 margin:0;
 padding:0;
@@ -17,10 +29,11 @@ font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
 
 body{
 min-height:100vh;
-background:linear-gradient(180deg,#f0a04b,#f6b26b);
+background:linear-gradient(180deg,var(--bg1),var(--bg2));
 background-size:400% 400%;
 animation:bgMove 25s ease infinite;
-color:#fff;
+color:var(--text);
+transition:background 1.2s ease;
 }
 
 @keyframes bgMove{
@@ -70,21 +83,22 @@ font-weight:600;
 border-radius:30px;
 text-decoration:none;
 color:#fff;
-background:rgba(0,0,0,.35);
+background:rgba(255,255,255,.18);
 backdrop-filter:blur(16px);
 box-shadow:0 20px 45px rgba(0,0,0,.45);
-transition:transform .2s ease;
+transition:transform .2s ease, box-shadow .3s ease;
 }
 
 .btn:active{
 transform:scale(.96);
 }
 
+/* Cores / brilhos por rede */
 .instagram{box-shadow:0 0 40px rgba(255,90,140,.6);}
 .tiktok{box-shadow:0 0 40px rgba(0,220,255,.55);}
+.facebook{box-shadow:0 0 40px rgba(66,103,178,.6);}
 .email{box-shadow:0 0 30px rgba(255,255,255,.35);}
 
-/* RODAPÉ */
 .footer{
 margin-top:80px;
 font-size:14px;
@@ -107,14 +121,22 @@ Link oficial
 <div class="buttons">
 <a href="https://www.instagram.com/duduhsofc" class="btn instagram">Instagram</a>
 <a href="https://www.tiktok.com/@kaduholanda_" class="btn tiktok">TikTok</a>
+<a href="https://www.facebook.com/share/1BdiePznPC/" class="btn facebook">Facebook</a>
 <a href="mailto:Caduholandadesousa@gmail.com" class="btn email">E-mail</a>
 </div>
 
-<!-- RODAPÉ -->
 <div class="footer">
-© Duduhsma
+© 2026 Duduhsma · Link oficial
 </div>
 
 </div>
+
+<script>
+const hour = new Date().getHours();
+if(hour >= 18 || hour < 6){
+  document.body.classList.add("dark");
+}
+</script>
+
 </body>
 </html>
