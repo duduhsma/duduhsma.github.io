@@ -279,170 +279,83 @@ const modal=document.getElementById("modal");
 document.getElementById("btnConheca").onclick=()=>modal.classList.add("active");
 document.getElementById("closeModal").onclick=()=>modal.classList.remove("active");
 </script>
-<!-- 🎂 SISTEMA DE ANIVERSÁRIO AVANÇADO – Carlos Eduardo -->
-<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
-
-<style id="birthday-theme"></style>
-
-<style>
-  .birthday-overlay {
-    position: fixed;
-    inset: 0;
-    background: linear-gradient(135deg, #ff9800, #ff5f6d);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-    animation: fadeIn 1s ease;
-  }
-
-  .birthday-card {
-    background: rgba(255,255,255,0.96);
-    padding: 28px 24px;
-    border-radius: 22px;
-    text-align: center;
-    box-shadow: 0 25px 70px rgba(0,0,0,0.35);
-    animation: slideUp 0.9s ease;
-    max-width: 340px;
-  }
-
-  .birthday-card h1 {
-    font-size: 22px;
-    color: #ff7a00;
-    margin-bottom: 10px;
-  }
-
-  .birthday-card p {
-    font-size: 14px;
-    color: #444;
-    line-height: 1.6;
-  }
-
-  .birthday-card strong {
-    display: block;
-    margin-top: 12px;
-    font-size: 18px;
-    color: #222;
-  }
-
-  .birthday-card button {
-    margin-top: 18px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 14px;
-    background: #ff7a00;
-    color: #fff;
-    font-size: 14px;
-    cursor: pointer;
-  }
-
-  .countdown {
-    position: fixed;
-    bottom: 18px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0,0,0,0.45);
-    color: #fff;
-    padding: 10px 18px;
-    border-radius: 20px;
-    font-size: 13px;
-    z-index: 999;
-    backdrop-filter: blur(10px);
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0 }
-    to { opacity: 1 }
-  }
-
-  @keyframes slideUp {
-    from { transform: translateY(30px); opacity: 0 }
-    to { transform: translateY(0); opacity: 1 }
-  }
-</style>
-
-<audio id="birthdayMusic" src="https://cdn.pixabay.com/audio/2023/03/29/audio_4d9e6c91d6.mp3" loop></audio>
-
+<!-- ===== ANIVERSÁRIO – MODO TESTE (AMANHÃ) ===== -->
 <script>
-(function () {
-  const today = new Date();
-  const year = today.getFullYear();
-  const birthday = new Date(year, 7, 4); // 04/08
-  const diffDays = Math.ceil((birthday - today) / (1000 * 60 * 60 * 24));
+/* ===== CONFIGURAÇÃO ===== */
+const TEST_MODE = true; // true = teste ligado
+const BIRTHDAY_DAY = new Date().getDate() + 1; // amanhã
+const BIRTHDAY_MONTH = new Date().getMonth() + 1;
+const BIRTHDAY_YEAR = 2009;
 
-  // ⏳ CONTADOR (7 DIAS ANTES)
-  if (diffDays <= 7 && diffDays > 0) {
-    const countdown = document.createElement("div");
-    countdown.className = "countdown";
-    document.body.appendChild(countdown);
+/* ===== FUNÇÕES ===== */
+function birthdayMessage() {
+  const now = new Date();
+  const age = now.getFullYear() - BIRTHDAY_YEAR;
+  const h = now.getHours();
 
-    setInterval(() => {
-      const now = new Date();
-      const diff = birthday - now;
-      if (diff <= 0) return countdown.remove();
+  if (h < 12) return `Bom dia! 🎉 Feliz ${age} anos! Que seu dia comece incrível.`;
+  if (h < 18) return `Boa tarde! 🎂 Parabéns pelos ${age} anos! Aproveita muito.`;
+  return `Boa noite! 🎊 Feliz aniversário! ${age} anos de história.`;
+}
 
-      const d = Math.floor(diff / (1000*60*60*24));
-      const h = Math.floor((diff / (1000*60*60)) % 24);
-      const m = Math.floor((diff / (1000*60)) % 60);
-      const s = Math.floor((diff / 1000) % 60);
+function showBirthday() {
+  document.body.classList.add("birthday-mode");
 
-      countdown.textContent = `🎉 Faltam ${d}d ${h}h ${m}m ${s}s para meu aniversário`;
-    }, 1000);
-  }
+  const overlay = document.createElement("div");
+  overlay.style.position = "fixed";
+  overlay.style.inset = "0";
+  overlay.style.background = "rgba(0,0,0,0.85)";
+  overlay.style.display = "flex";
+  overlay.style.justifyContent = "center";
+  overlay.style.alignItems = "center";
+  overlay.style.zIndex = "9999";
 
-  // 🎉 DIA DO ANIVERSÁRIO
-  if (today.getDate() === 4 && today.getMonth() === 7) {
+  overlay.innerHTML = `
+    <div style="
+      background:#fff;
+      color:#000;
+      padding:25px;
+      border-radius:18px;
+      max-width:320px;
+      text-align:center;
+    ">
+      <h2>🎉 Feliz Aniversário!</h2>
+      <p>${birthdayMessage()}</p>
+      <button onclick="this.closest('div').parentElement.remove()"
+        style="
+          margin-top:15px;
+          padding:10px 16px;
+          border:none;
+          border-radius:10px;
+          background:#ff0066;
+          color:#fff;
+          font-weight:bold;
+        ">
+        Entrar no site
+      </button>
+    </div>
+  `;
+  document.body.appendChild(overlay);
 
-    const age = year - 2009;
-    const hour = today.getHours();
+  const confettiScript = document.createElement("script");
+  confettiScript.src =
+    "https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js";
+  confettiScript.onload = () => {
+    confetti({ particleCount: 200, spread: 120 });
+  };
+  document.body.appendChild(confettiScript);
+}
 
-    let message = "";
-    if (hour >= 5 && hour < 12) {
-      message = "🌅 Bom dia! Hoje começa um novo ciclo cheio de possibilidades.";
-    } else if (hour >= 12 && hour < 18) {
-      message = "☀️ Boa tarde! Que esse novo ano traga evolução e boas histórias.";
-    } else {
-      message = "🌙 Boa noite! Um dia especial para celebrar quem você se tornou.";
-    }
+/* ===== VERIFICAÇÃO ===== */
+const now = new Date();
+const isBirthday =
+  now.getDate() === BIRTHDAY_DAY &&
+  now.getMonth() + 1 === BIRTHDAY_MONTH;
 
-    document.getElementById("birthday-theme").innerHTML = `
-      body {
-        background: linear-gradient(135deg, #ffb347, #ff5f6d) !important;
-      }
-    `;
-
-    const music = document.getElementById("birthdayMusic");
-    music.volume = 0.25;
-    music.play().catch(()=>{});
-
-    confetti({ particleCount: 200, spread: 90 });
-
-    // Confete extra à meia-noite
-    if (hour === 0) {
-      setInterval(() => {
-        confetti({ particleCount: 120, spread: 100 });
-      }, 2000);
-    }
-
-    const overlay = document.createElement("div");
-    overlay.className = "birthday-overlay";
-    overlay.innerHTML = `
-      <div class="birthday-card">
-        <h1>🎉 Feliz Aniversário</h1>
-        <p>${message}</p>
-        <strong>Carlos Eduardo – ${age} anos</strong>
-        <p>
-          Que esse novo ano venha com coragem,<br>
-          fé, crescimento e momentos inesquecíveis ✨
-        </p>
-        <button onclick="document.querySelector('.birthday-overlay').remove(); document.getElementById('birthdayMusic').pause();">
-          Fechar
-        </button>
-      </div>
-    `;
-    document.body.appendChild(overlay);
-  }
-})();
+if (TEST_MODE || isBirthday) {
+  window.addEventListener("load", showBirthday);
+}
 </script>
+<!-- ===== FIM DO ANIVERSÁRIO ===== -->
 </body>
 </html>
