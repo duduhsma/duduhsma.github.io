@@ -41,10 +41,24 @@ padding:env(safe-area-inset-top) 18px 90px;
 text-align:center;
 }
 
+/* entrada cinematográfica */
+.fade{
+opacity:0;
+transform:translateY(20px);
+animation:fadeUp .8s ease forwards;
+}
+.delay1{animation-delay:.2s}
+.delay2{animation-delay:.4s}
+.delay3{animation-delay:.6s}
+
+@keyframes fadeUp{
+to{opacity:1;transform:translateY(0)}
+}
+
 h1{
 font-size:52px;
 font-weight:900;
-margin-bottom:34px;
+margin-bottom:26px;
 }
 
 .perfil{
@@ -52,14 +66,35 @@ width:240px;
 height:240px;
 border-radius:50%;
 object-fit:cover;
-margin-bottom:36px;
+margin-bottom:18px;
 box-shadow:0 30px 70px rgba(0,0,0,.45);
+}
+
+.divider{
+width:50px;
+height:3px;
+margin:0 auto 26px;
+background:rgba(255,255,255,.6);
+border-radius:10px;
+animation:pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse{
+0%,100%{opacity:.4}
+50%{opacity:1}
 }
 
 .main{
 font-size:26px;
 line-height:1.6;
-margin-bottom:90px;
+margin-bottom:40px;
+min-height:40px;
+}
+
+.shadow-sep{
+height:20px;
+margin-bottom:50px;
+background:linear-gradient(to bottom,rgba(0,0,0,.25),transparent);
 }
 
 .buttons{
@@ -68,7 +103,6 @@ flex-direction:column;
 gap:28px;
 }
 
-/* BOTÕES */
 .btn{
 padding:28px;
 font-size:22px;
@@ -79,20 +113,19 @@ color:#fff;
 background:rgba(0,0,0,.35);
 backdrop-filter:blur(16px);
 box-shadow:0 20px 45px rgba(0,0,0,.45);
-transition:transform .25s ease, box-shadow .25s ease;
+transition:transform .2s ease, box-shadow .2s ease;
 opacity:0;
 transform:translateY(25px);
 }
 
-/* animação em cascata */
 .btn.show{
 opacity:1;
 transform:translateY(0);
 }
 
-/* clique */
 .btn:active{
 transform:scale(.96);
+box-shadow:0 0 25px rgba(255,255,255,.4);
 }
 
 .instagram{box-shadow:0 0 40px rgba(255,90,140,.6);}
@@ -101,9 +134,8 @@ transform:scale(.96);
 .spotify{box-shadow:0 0 35px rgba(30,215,96,.6);}
 .ngl{box-shadow:0 0 35px rgba(255,255,255,.5);}
 
-/* botão mais clicado */
 .top{
-box-shadow:0 0 55px rgba(255,215,0,.9) !important;
+box-shadow:0 0 55px rgba(255,215,0,.9)!important;
 transform:scale(1.04);
 }
 
@@ -137,11 +169,6 @@ text-align:left;
 animation:fadeUp .4s ease;
 }
 
-@keyframes fadeUp{
-from{opacity:0;transform:translateY(20px)}
-to{opacity:1;transform:translateY(0)}
-}
-
 .modal h2{
 font-size:26px;
 margin-bottom:16px;
@@ -168,11 +195,15 @@ font-weight:600;
 <body>
 <div class="container">
 
-<h1>Duduhsma</h1>
+<h1 class="fade delay1">Duduhsma</h1>
 
-<img src="foto.jpg" class="perfil" alt="Foto Duduhsma">
+<img src="foto.jpg" class="perfil fade delay2">
 
-<p class="main">Conecte-se comigo</p>
+<div class="divider fade delay2"></div>
+
+<p class="main fade delay3" id="rotatingText">Link oficial</p>
+
+<div class="shadow-sep"></div>
 
 <div class="buttons">
 <a href="https://www.instagram.com/duduhsofc" class="btn instagram" data-id="instagram">Instagram</a>
@@ -180,11 +211,14 @@ font-weight:600;
 <a href="https://www.facebook.com/" class="btn facebook" data-id="facebook">Facebook</a>
 <a href="https://open.spotify.com/" class="btn spotify" data-id="spotify">Spotify</a>
 <a href="https://ngl.link/kaduhsma1" class="btn ngl" data-id="ngl">NGL 💬</a>
+
+<!-- BOTÃO CONHEÇA-ME (como antes, sem mudanças) -->
 <a href="#" class="btn" data-id="conheca" onclick="openModal()">Conheça-me</a>
+
 <a href="mailto:Caduholandadesousa@gmail.com" class="btn email" data-id="email">E-mail</a>
 </div>
 
-<div class="footer">© Duduhsma</div>
+<div class="footer">© Duduhsma — link oficial</div>
 </div>
 
 <!-- MODAL -->
@@ -201,42 +235,40 @@ font-weight:600;
 
 <script>
 // modo noite automático
-const hour = new Date().getHours();
-if(hour >= 18 || hour < 6){
-document.body.classList.add('night');
-}
+const hour=new Date().getHours();
+if(hour>=18||hour<6){document.body.classList.add('night');}
 
-// animação em cascata
-document.querySelectorAll('.btn').forEach((btn,i)=>{
-setTimeout(()=>btn.classList.add('show'), i*120);
+// animação em cascata dos botões
+document.querySelectorAll('.btn').forEach((b,i)=>{
+setTimeout(()=>b.classList.add('show'),i*120);
 });
 
-// contador de cliques + destaque
-const clicks = JSON.parse(localStorage.getItem('clicks')) || {};
+// texto rotativo
+const texts=["Link oficial","Conecte-se comigo","Me acompanhe"];
+let t=0;
+setInterval(()=>{
+t=(t+1)%texts.length;
+document.getElementById("rotatingText").textContent=texts[t];
+},3500);
 
+// contador + destaque do botão mais clicado
+const clicks=JSON.parse(localStorage.getItem('clicks'))||{};
 document.querySelectorAll('.btn').forEach(btn=>{
-const id = btn.dataset.id;
-btn.addEventListener('click', ()=>{
-clicks[id] = (clicks[id] || 0) + 1;
-localStorage.setItem('clicks', JSON.stringify(clicks));
-highlightTop();
+btn.onclick=()=>{
+const id=btn.dataset.id;
+clicks[id]=(clicks[id]||0)+1;
+localStorage.setItem('clicks',JSON.stringify(clicks));
+highlight();
+};
 });
-});
-
-function highlightTop(){
-let topId = null;
-let max = 0;
-for(const id in clicks){
-if(clicks[id] > max){
-max = clicks[id];
-topId = id;
-}
-}
-document.querySelectorAll('.btn').forEach(btn=>{
-btn.classList.toggle('top', btn.dataset.id === topId);
+function highlight(){
+let max=0,top=null;
+for(let id in clicks){if(clicks[id]>max){max=clicks[id];top=id}}
+document.querySelectorAll('.btn').forEach(b=>{
+b.classList.toggle('top',b.dataset.id===top);
 });
 }
-highlightTop();
+highlight();
 
 // modal
 function openModal(){
