@@ -21,6 +21,11 @@ background:linear-gradient(180deg,#f0a04b,#f6b26b);
 background-size:400% 400%;
 animation:bgMove 25s ease infinite;
 color:#fff;
+transition:background 1s ease;
+}
+
+body.night{
+background:linear-gradient(180deg,#0f2027,#203a43,#2c5364);
 }
 
 @keyframes bgMove{
@@ -32,92 +37,130 @@ color:#fff;
 .container{
 max-width:430px;
 margin:auto;
-padding:env(safe-area-inset-top) 18px 80px;
+padding:env(safe-area-inset-top) 18px 90px;
 text-align:center;
 }
 
 h1{
-font-size:50px;
+font-size:52px;
 font-weight:900;
-margin-bottom:30px;
+margin-bottom:34px;
 }
 
 .perfil{
-width:220px;
-height:220px;
+width:240px;
+height:240px;
 border-radius:50%;
 object-fit:cover;
-margin-bottom:32px;
+margin-bottom:36px;
 box-shadow:0 30px 70px rgba(0,0,0,.45);
 }
 
 .main{
-font-size:24px;
+font-size:26px;
 line-height:1.6;
-margin-bottom:70px;
+margin-bottom:90px;
 }
 
 .buttons{
 display:flex;
 flex-direction:column;
-gap:26px;
+gap:28px;
 }
 
+/* BOTÕES */
 .btn{
-padding:26px;
+padding:28px;
 font-size:22px;
 font-weight:600;
-border-radius:30px;
+border-radius:32px;
 text-decoration:none;
 color:#fff;
 background:rgba(0,0,0,.35);
 backdrop-filter:blur(16px);
 box-shadow:0 20px 45px rgba(0,0,0,.45);
-transition:transform .2s ease, background .3s ease;
-border:none;
-cursor:pointer;
+transition:transform .25s ease, box-shadow .25s ease;
+opacity:0;
+transform:translateY(25px);
 }
 
+/* animação em cascata */
+.btn.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* clique */
 .btn:active{
 transform:scale(.96);
 }
 
 .instagram{box-shadow:0 0 40px rgba(255,90,140,.6);}
 .tiktok{box-shadow:0 0 40px rgba(0,220,255,.55);}
-.email{box-shadow:0 0 30px rgba(255,255,255,.35);}
-.ngl{box-shadow:0 0 35px rgba(255,255,255,.6);}
-.sobre{box-shadow:0 0 35px rgba(255,255,255,.55);}
+.facebook{box-shadow:0 0 35px rgba(24,119,242,.6);}
+.spotify{box-shadow:0 0 35px rgba(30,215,96,.6);}
+.ngl{box-shadow:0 0 35px rgba(255,255,255,.5);}
 
-/* ÁREA CONHEÇA-ME */
-.sobre-box{
-max-height:0;
-overflow:hidden;
-opacity:0;
-transition:all .5s ease;
-background:rgba(0,0,0,.35);
-backdrop-filter:blur(14px);
-border-radius:24px;
-padding:0 22px;
+/* botão mais clicado */
+.top{
+box-shadow:0 0 55px rgba(255,215,0,.9) !important;
+transform:scale(1.04);
+}
+
+.footer{
+margin-top:90px;
+font-size:14px;
+opacity:.75;
+}
+
+/* MODAL CONHEÇA-ME */
+.overlay{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.7);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:10;
+}
+
+.overlay.active{display:flex;}
+
+.modal{
+background:rgba(0,0,0,.6);
+backdrop-filter:blur(18px);
+padding:32px;
+border-radius:28px;
+max-width:360px;
+width:90%;
 text-align:left;
+animation:fadeUp .4s ease;
 }
 
-.sobre-box.open{
-max-height:600px;
-opacity:1;
-padding:26px 22px;
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(20px)}
+to{opacity:1;transform:translateY(0)}
 }
 
-.sobre-box p{
+.modal h2{
+font-size:26px;
+margin-bottom:16px;
+}
+
+.modal p{
 font-size:18px;
 line-height:1.6;
-margin-bottom:12px;
+margin-bottom:10px;
 }
 
-/* RODAPÉ */
-.footer{
-margin-top:70px;
-font-size:14px;
-opacity:.8;
+.close{
+margin-top:20px;
+text-align:center;
+padding:14px;
+border-radius:22px;
+background:rgba(255,255,255,.2);
+cursor:pointer;
+font-weight:600;
 }
 </style>
 </head>
@@ -129,44 +172,78 @@ opacity:.8;
 
 <img src="foto.jpg" class="perfil" alt="Foto Duduhsma">
 
-<p class="main">
-Link oficial
-</p>
+<p class="main">Link oficial</p>
 
 <div class="buttons">
-
-<a href="https://www.instagram.com/duduhsofc" class="btn instagram">Instagram</a>
-<a href="https://www.tiktok.com/@kaduholanda_" class="btn tiktok">TikTok</a>
-<a href="mailto:Caduholandadesousa@gmail.com" class="btn email">E-mail</a>
-
-<!-- NGL -->
-<a href="https://ngl.link/kaduhsma1" class="btn ngl" target="_blank">
-NGL • mande uma mensagem 💬
-</a>
-
-<!-- BOTÃO CONHEÇA-ME -->
-<button class="btn sobre" onclick="toggleSobre()">Conheça-me</button>
-
-<!-- CONTEÚDO -->
-<div id="sobreBox" class="sobre-box">
-<p><strong>Idade:</strong> 16 anos</p>
-<p><strong>Hobby:</strong> viagem, praia e conhecer lugares novos</p>
-<p><strong>O que eu gosto de fazer:</strong> trabalhar, curtir, sair à noite e fazer novas amizades</p>
-<p><strong>Time:</strong> Vasco da Gama</p>
+<a href="https://www.instagram.com/duduhsofc" class="btn instagram" data-id="instagram">Instagram</a>
+<a href="https://www.tiktok.com/@kaduholanda_" class="btn tiktok" data-id="tiktok">TikTok</a>
+<a href="https://www.facebook.com/" class="btn facebook" data-id="facebook">Facebook</a>
+<a href="https://open.spotify.com/" class="btn spotify" data-id="spotify">Spotify</a>
+<a href="https://ngl.link/kaduhsma1" class="btn ngl" data-id="ngl">NGL 💬</a>
+<a href="#" class="btn" data-id="conheca" onclick="openModal()">Conheça-me</a>
+<a href="mailto:Caduholandadesousa@gmail.com" class="btn email" data-id="email">E-mail</a>
 </div>
 
+<div class="footer">© Duduhsma</div>
 </div>
 
-<div class="footer">
-© Duduhsma
+<!-- MODAL -->
+<div class="overlay" id="modal">
+<div class="modal">
+<h2>Conheça-me</h2>
+<p><b>Idade:</b> 16 anos</p>
+<p><b>Hobby:</b> viajar, praia, lugares novos</p>
+<p><b>Gosto de:</b> trabalhar, curtir a noite, fazer novas amizades</p>
+<p><b>Time:</b> Vasco da Gama</p>
+<div class="close" onclick="closeModal()">Fechar</div>
 </div>
-
 </div>
 
 <script>
-function toggleSobre(){
-const box = document.getElementById("sobreBox");
-box.classList.toggle("open");
+// modo noite automático
+const hour = new Date().getHours();
+if(hour >= 18 || hour < 6){
+document.body.classList.add('night');
+}
+
+// animação em cascata
+document.querySelectorAll('.btn').forEach((btn,i)=>{
+setTimeout(()=>btn.classList.add('show'), i*120);
+});
+
+// contador de cliques + destaque
+const clicks = JSON.parse(localStorage.getItem('clicks')) || {};
+
+document.querySelectorAll('.btn').forEach(btn=>{
+const id = btn.dataset.id;
+btn.addEventListener('click', ()=>{
+clicks[id] = (clicks[id] || 0) + 1;
+localStorage.setItem('clicks', JSON.stringify(clicks));
+highlightTop();
+});
+});
+
+function highlightTop(){
+let topId = null;
+let max = 0;
+for(const id in clicks){
+if(clicks[id] > max){
+max = clicks[id];
+topId = id;
+}
+}
+document.querySelectorAll('.btn').forEach(btn=>{
+btn.classList.toggle('top', btn.dataset.id === topId);
+});
+}
+highlightTop();
+
+// modal
+function openModal(){
+document.getElementById('modal').classList.add('active');
+}
+function closeModal(){
+document.getElementById('modal').classList.remove('active');
 }
 </script>
 
