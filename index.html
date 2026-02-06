@@ -49,6 +49,21 @@ padding:env(safe-area-inset-top) 18px 60px;
 text-align:center;
 }
 
+/* Cascata */
+.fade{
+opacity:0;
+transform:translateY(18px);
+animation:fadeUp 1s ease forwards;
+}
+.delay1{animation-delay:.2s}
+.delay2{animation-delay:.5s}
+.delay3{animation-delay:.9s}
+.delay4{animation-delay:1.3s}
+
+@keyframes fadeUp{
+to{opacity:1;transform:translateY(0);}
+}
+
 h1{
 font-size:50px;
 font-weight:900;
@@ -60,14 +75,16 @@ width:220px;
 height:220px;
 border-radius:50%;
 object-fit:cover;
-margin-bottom:32px;
+margin-bottom:28px;
 box-shadow:0 30px 70px rgba(0,0,0,.45);
 }
 
 .main{
 font-size:24px;
 line-height:1.6;
-margin-bottom:90px;
+margin-bottom:70px;
+min-height:34px;
+transition:opacity .6s ease;
 }
 
 .buttons{
@@ -86,18 +103,47 @@ color:#fff;
 background:rgba(255,255,255,.18);
 backdrop-filter:blur(16px);
 box-shadow:0 20px 45px rgba(0,0,0,.45);
-transition:transform .2s ease, box-shadow .3s ease;
+transition:transform .2s ease;
 }
 
-.btn:active{
-transform:scale(.96);
-}
+.btn:active{transform:scale(.96);}
 
-/* Cores / brilhos por rede */
 .instagram{box-shadow:0 0 40px rgba(255,90,140,.6);}
 .tiktok{box-shadow:0 0 40px rgba(0,220,255,.55);}
+.spotify{box-shadow:0 0 40px rgba(30,215,96,.6);}
 .facebook{box-shadow:0 0 40px rgba(66,103,178,.6);}
 .email{box-shadow:0 0 30px rgba(255,255,255,.35);}
+
+/* Destaque botão campeão */
+@keyframes champion{
+0%{transform:scale(1)}
+50%{transform:scale(1.03)}
+100%{transform:scale(1)}
+}
+.champion{
+animation:champion 2.5s ease-in-out infinite;
+box-shadow:0 0 65px rgba(255,255,255,.8)!important;
+}
+
+/* Botão surpresa */
+.surprise{
+margin-top:50px;
+font-size:15px;
+opacity:0;
+cursor:pointer;
+transition:opacity .8s ease;
+}
+
+.surprise.show{opacity:.8}
+
+.surprise-box{
+display:none;
+margin-top:25px;
+font-size:18px;
+line-height:1.6;
+opacity:.9;
+animation:fadeUp 1s ease forwards;
+}
 
 .footer{
 margin-top:80px;
@@ -110,20 +156,27 @@ opacity:.7;
 <body>
 <div class="container">
 
-<h1>Duduhsma</h1>
+<h1 class="fade delay1">Duduhsma</h1>
 
-<img src="foto.jpg" class="perfil" alt="Foto Duduhsma">
+<img src="foto.jpg" class="perfil fade delay2" alt="Foto Duduhsma">
 
-<p class="main">
-Link oficial
+<p class="main fade delay3" id="rotativo">
+Conecte-se comigo
 </p>
 
-<div class="buttons">
-<a href="https://www.instagram.com/duduhsofc" class="btn instagram">Instagram</a>
-<a href="https://www.tiktok.com/@kaduholanda_" class="btn tiktok">TikTok</a>
-<a href="https://www.facebook.com/share/1BdiePznPC/" class="btn facebook">Facebook</a>
-<a href="https://open.spotify.com/user/31rknpp5ucnbpcnubf3aqrvduxi4?si=2FjiLGGbTZem8L208ZE0-A" class="btn spotify">Spotify</a>
-<a href="mailto:Caduholandadesousa@gmail.com" class="btn email">E-mail</a>
+<div class="buttons fade delay4">
+<a href="https://www.instagram.com/duduhsofc" class="btn instagram" data-id="instagram" onclick="count(this)">Instagram</a>
+<a href="https://www.tiktok.com/@kaduholanda_" class="btn tiktok" data-id="tiktok" onclick="count(this)">TikTok</a>
+<a href="SEU_LINK_DO_SPOTIFY_AQUI" class="btn spotify" data-id="spotify" onclick="count(this)">Spotify</a>
+<a href="SEU_LINK_DO_FACEBOOK_AQUI" class="btn facebook" data-id="facebook" onclick="count(this)">Facebook</a>
+<a href="mailto:Caduholandadesousa@gmail.com" class="btn email" data-id="email" onclick="count(this)">E-mail</a>
+</div>
+
+<div class="surprise" id="surpriseBtn">✨ Algo a mais…</div>
+<div class="surprise-box" id="surpriseBox">
+Às vezes Deus muda o caminho…  
+não pra nos perder,  
+mas pra nos encontrar. 🤍
 </div>
 
 <div class="footer">
@@ -133,10 +186,61 @@ Link oficial
 </div>
 
 <script>
+// Modo escuro automático
 const hour = new Date().getHours();
 if(hour >= 18 || hour < 6){
-  document.body.classList.add("dark");
+document.body.classList.add("dark");
 }
+
+// Texto rotativo
+const textos=[
+"Conecte-se comigo",
+"Acompanhe minha jornada",
+"Links oficiais",
+"Conteúdos & caminhos"
+];
+let i=0;
+const el=document.getElementById("rotativo");
+
+setInterval(()=>{
+el.style.opacity=0;
+setTimeout(()=>{
+i=(i+1)%textos.length;
+el.textContent=textos[i];
+el.style.opacity=1;
+},600);
+},4000);
+
+// Contador + destaque campeão
+function count(btn){
+const id=btn.dataset.id;
+let v=localStorage.getItem(id)||0;
+localStorage.setItem(id,++v);
+highlightChampion();
+showSurprise();
+}
+
+function highlightChampion(){
+let max=0, champ=null;
+document.querySelectorAll(".btn").forEach(b=>{
+const c=localStorage.getItem(b.dataset.id)||0;
+b.classList.remove("champion");
+if(c>max){max=c;champ=b;}
+});
+if(champ) champ.classList.add("champion");
+}
+
+// Botão surpresa
+function showSurprise(){
+document.getElementById("surpriseBtn").classList.add("show");
+}
+
+document.getElementById("surpriseBtn").onclick=()=>{
+document.getElementById("surpriseBox").style.display="block";
+}
+
+// Inicializa campeão ao abrir
+highlightChampion();
 </script>
 
 </body>
