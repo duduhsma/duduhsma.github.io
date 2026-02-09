@@ -76,10 +76,10 @@ height:3px;
 margin:0 auto 26px;
 background:rgba(255,255,255,.6);
 border-radius:10px;
-animation:pulse 3s ease-in-out infinite;
+animation:pulseDivider 3s ease-in-out infinite;
 }
 
-@keyframes pulse{
+@keyframes pulseDivider{
 0%,100%{opacity:.4}
 50%{opacity:1}
 }
@@ -113,9 +113,10 @@ color:#fff;
 background:rgba(0,0,0,.35);
 backdrop-filter:blur(16px);
 box-shadow:0 20px 45px rgba(0,0,0,.45);
-transition:transform .2s ease, box-shadow .2s ease;
+transition:transform .25s ease, box-shadow .25s ease;
 opacity:0;
 transform:translateY(25px);
+position:relative;
 }
 
 .btn.show{
@@ -125,18 +126,60 @@ transform:translateY(0);
 
 .btn:active{
 transform:scale(.96);
-box-shadow:0 0 25px rgba(255,255,255,.4);
 }
 
 .instagram{box-shadow:0 0 40px rgba(255,90,140,.6);}
 .tiktok{box-shadow:0 0 40px rgba(0,220,255,.55);}
 .facebook{box-shadow:0 0 35px rgba(24,119,242,.6);}
 .spotify{box-shadow:0 0 35px rgba(30,215,96,.6);}
-.ngl{box-shadow:0 0 35px rgba(255,255,255,.5);}
 
 .top{
 box-shadow:0 0 55px rgba(255,215,0,.9)!important;
 transform:scale(1.04);
+}
+
+/* BOTÃO SERVIÇO – DESTAQUE TOTAL */
+.whatsapp{
+background:linear-gradient(135deg,#25D366,#1ebe5d);
+box-shadow:
+0 0 40px rgba(37,211,102,.9),
+0 0 80px rgba(37,211,102,.55);
+animation:pulseService 2.8s ease-in-out infinite;
+}
+
+@keyframes pulseService{
+0%{transform:scale(1.05)}
+50%{transform:scale(1.08)}
+100%{transform:scale(1.05)}
+}
+
+.whatsapp:hover{
+box-shadow:
+0 0 55px rgba(37,211,102,1),
+0 0 110px rgba(37,211,102,.85);
+}
+
+/* selo */
+.badge{
+position:absolute;
+top:-12px;
+right:-12px;
+background:#FFD700;
+color:#000;
+padding:6px 12px;
+border-radius:20px;
+font-size:13px;
+font-weight:700;
+box-shadow:0 8px 20px rgba(0,0,0,.4);
+}
+
+/* microtexto */
+.micro{
+display:block;
+margin-top:8px;
+font-size:14px;
+font-weight:500;
+opacity:.95;
 }
 
 .footer{
@@ -145,7 +188,7 @@ font-size:14px;
 opacity:.75;
 }
 
-/* MODAL CONHEÇA-ME */
+/* MODAL */
 .overlay{
 position:fixed;
 inset:0;
@@ -155,7 +198,6 @@ align-items:center;
 justify-content:center;
 z-index:20;
 }
-
 .overlay.active{display:flex;}
 
 .modal{
@@ -165,21 +207,11 @@ padding:32px;
 border-radius:28px;
 max-width:360px;
 width:90%;
-text-align:left;
 animation:fadeUp .4s ease;
+text-align:left;
 }
-
-.modal h2{
-font-size:26px;
-margin-bottom:16px;
-}
-
-.modal p{
-font-size:18px;
-line-height:1.6;
-margin-bottom:10px;
-}
-
+.modal h2{font-size:26px;margin-bottom:16px;}
+.modal p{font-size:18px;line-height:1.6;margin-bottom:10px;}
 .close{
 margin-top:20px;
 text-align:center;
@@ -188,9 +220,6 @@ border-radius:22px;
 background:rgba(255,255,255,.2);
 cursor:pointer;
 font-weight:600;
-.whatsapp{
-  background:#25D366;
-  box-shadow:0 0 40px rgba(37,211,102,.65);
 }
 </style>
 </head>
@@ -199,9 +228,7 @@ font-weight:600;
 <div class="container">
 
 <h1 class="fade delay1">Duduhsma</h1>
-
 <img src="foto.jpg" class="perfil fade delay2">
-
 <div class="divider fade delay2"></div>
 
 <p class="main fade delay3" id="rotatingText">Link oficial</p>
@@ -209,17 +236,22 @@ font-weight:600;
 <div class="shadow-sep"></div>
 
 <div class="buttons">
+
+<a href="https://wa.me/5599984923448?text=Olá!%20👋%20Vi%20seus%20Serviços%20Digitais%20pelo%20site%20e%20gostaria%20de%20mais%20informações.%20Pode%20me%20explicar%20como%20funciona?"
+class="btn whatsapp"
+data-id="whatsapp">
+<span class="badge">Mais pedido</span>
+Solicitar serviço 📥
+<span class="micro">Atendimento rápido no WhatsApp</span>
+</a>
+
 <a href="https://www.instagram.com/duduhsofc" class="btn instagram" data-id="instagram">Instagram</a>
 <a href="https://www.tiktok.com/@kaduholanda_" class="btn tiktok" data-id="tiktok">TikTok</a>
 <a href="https://www.facebook.com/" class="btn facebook" data-id="facebook">Facebook</a>
 <a href="https://open.spotify.com/" class="btn spotify" data-id="spotify">Spotify</a>
-<a href="https://wa.me/5599984923448?text=Olá!%20👋%20Vi%20seus%20Serviços%20Digitais%20pelo%20site%20e%20gostaria%20de%20mais%20informações.%20Pode%20me%20explicar%20como%20funciona?"
-   class="btn whatsapp">
-    Solicitar serviço 📥
-</a>
 <a href="javascript:void(0)" class="btn" data-id="conheca" id="btnConheca">Conheça-me</a>
-
 <a href="mailto:Caduholandadesousa@gmail.com" class="btn email" data-id="email">E-mail</a>
+
 </div>
 
 <div class="footer">© Duduhsma — link oficial</div>
@@ -242,7 +274,7 @@ font-weight:600;
 const hour=new Date().getHours();
 if(hour>=18||hour<6){document.body.classList.add('night');}
 
-// cascata botões
+// animação em cascata (serviço primeiro)
 document.querySelectorAll('.btn').forEach((b,i)=>{
 setTimeout(()=>b.classList.add('show'),i*120);
 });
@@ -255,7 +287,7 @@ t=(t+1)%texts.length;
 document.getElementById("rotatingText").textContent=texts[t];
 },3500);
 
-// contador + destaque (ignorando Conheça-me)
+// contador + destaque
 const clicks=JSON.parse(localStorage.getItem('clicks'))||{};
 document.querySelectorAll('.btn').forEach(btn=>{
 btn.addEventListener('click',()=>{
@@ -279,11 +311,11 @@ b.classList.toggle('top',b.dataset.id===top);
 }
 highlight();
 
-// modal funcionamento
+// modal
 const modal=document.getElementById("modal");
 document.getElementById("btnConheca").onclick=()=>modal.classList.add("active");
 document.getElementById("closeModal").onclick=()=>modal.classList.remove("active");
 </script>
-  
+
 </body>
 </html>
