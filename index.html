@@ -15,7 +15,7 @@ box-sizing:border-box;
 font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
 }
 
-/* ================= FUNDOS DINÂMICOS ================= */
+/* ===== FUNDOS ===== */
 body{
 min-height:100vh;
 background-size:400% 400%;
@@ -27,11 +27,9 @@ transition:background 1s ease;
 body.manha{
 background:linear-gradient(180deg,#f0a04b,#f6b26b);
 }
-
 body.tarde{
 background:linear-gradient(180deg,#7c3aed,#a78bfa);
 }
-
 body.noite{
 background:linear-gradient(180deg,#0f2027,#203a43,#2c5364);
 }
@@ -49,21 +47,21 @@ padding:env(safe-area-inset-top) 18px 110px;
 text-align:center;
 }
 
-/* ================= RELÓGIO ================= */
+/* ===== RELÓGIO ===== */
 .relogio{
-font-size:18px;
-font-weight:700;
+font-size:15px;
+font-weight:600;
 padding:10px 18px;
-border-radius:16px;
+border-radius:14px;
 display:inline-block;
-margin-bottom:16px;
+margin-bottom:18px;
 }
 
 .manha .relogio{background:#fff3e0;color:#c2410c;}
 .tarde .relogio{background:#ede9fe;color:#5b21b6;}
 .noite .relogio{background:#020617;color:#38bdf8;}
 
-/* ================= ANIMAÇÕES ================= */
+/* ===== ANIMAÇÕES ===== */
 .fade{
 opacity:0;
 transform:translateY(20px);
@@ -78,14 +76,14 @@ to{opacity:1;transform:translateY(0)}
 }
 
 h1{
-font-size:52px;
+font-size:50px;
 font-weight:900;
-margin-bottom:26px;
+margin-bottom:24px;
 }
 
 .perfil{
-width:240px;
-height:240px;
+width:230px;
+height:230px;
 border-radius:50%;
 object-fit:cover;
 margin-bottom:18px;
@@ -93,45 +91,46 @@ box-shadow:0 30px 70px rgba(0,0,0,.45);
 }
 
 .divider{
-width:50px;
+width:46px;
 height:3px;
-margin:0 auto 26px;
+margin:0 auto 24px;
 background:rgba(255,255,255,.6);
 border-radius:10px;
 }
 
 .main{
-font-size:24px;
-line-height:1.6;
-margin-bottom:10px;
+font-size:22px;
+line-height:1.5;
+margin-bottom:6px;
 }
 
-.microchamada{
+.subtitle{
 font-size:14px;
 opacity:.9;
 margin-bottom:30px;
 }
 
-/* ================= BOTÕES ================= */
+/* ===== BOTÕES ===== */
 .buttons{
 display:flex;
 flex-direction:column;
-gap:28px;
+gap:26px;
 }
 
 .btn{
 padding:26px;
-font-size:22px;
+font-size:20px;
 font-weight:600;
-border-radius:32px;
+border-radius:28px;
 text-decoration:none;
 color:#fff;
 background:rgba(0,0,0,.35);
 backdrop-filter:blur(16px);
-box-shadow:0 20px 45px rgba(0,0,0,.45);
+box-shadow:0 18px 40px rgba(0,0,0,.45);
 transition:.25s;
 opacity:0;
 transform:translateY(25px);
+position:relative;
 }
 
 .btn.show{
@@ -143,16 +142,16 @@ transform:translateY(0);
 transform:scale(.96);
 }
 
+/* redes */
 .instagram{box-shadow:0 0 40px rgba(255,90,140,.6);}
 .tiktok{box-shadow:0 0 40px rgba(0,220,255,.55);}
 .facebook{box-shadow:0 0 35px rgba(24,119,242,.6);}
 .spotify{box-shadow:0 0 35px rgba(30,215,96,.6);}
 
-/* ================= BOTÃO SERVIÇO TURBINADO ================= */
+/* ===== BOTÃO SERVIÇO ===== */
 .whatsapp{
 background:#25D366;
 box-shadow:0 0 45px rgba(37,211,102,.7);
-position:relative;
 animation:pulse 2.2s infinite;
 }
 
@@ -170,15 +169,15 @@ opacity:.95;
 }
 
 /* selo */
-.selo{
+.badge{
 position:absolute;
 top:-12px;
-right:-12px;
+right:16px;
 background:#ef4444;
 color:#fff;
-font-size:11px;
+font-size:12px;
 font-weight:700;
-padding:6px 10px;
+padding:6px 12px;
 border-radius:999px;
 }
 
@@ -188,18 +187,13 @@ border-radius:999px;
 100%{transform:scale(1)}
 }
 
-.top{
-box-shadow:0 0 55px rgba(255,215,0,.9)!important;
-transform:scale(1.04);
-}
-
 .footer{
 margin-top:90px;
 font-size:14px;
 opacity:.75;
 }
 
-/* ================= MODAL ================= */
+/* ===== MODAL ===== */
 .overlay{
 position:fixed;
 inset:0;
@@ -223,14 +217,14 @@ text-align:left;
 }
 
 .modal h2{
-font-size:26px;
-margin-bottom:16px;
+font-size:24px;
+margin-bottom:14px;
 }
 
 .modal p{
-font-size:18px;
+font-size:17px;
 line-height:1.6;
-margin-bottom:10px;
+margin-bottom:8px;
 }
 
 .close{
@@ -258,22 +252,21 @@ font-weight:600;
 <div class="divider fade delay2"></div>
 
 <p class="main fade delay3">Serviços digitais rápidos e profissionais</p>
-<p class="microchamada fade delay3">👆 Veio dos Stories? Clique abaixo e fale comigo agora</p>
+<p class="subtitle fade delay3">⭐ Atendimento rápido no WhatsApp • a partir de R$25</p>
 
 <div class="buttons">
 
-<!-- BOTÃO SERVIÇO NO TOPO -->
 <a href="https://wa.me/5599984923448?text=Olá!%20Vi%20seus%20Serviços%20Digitais%20pelo%20site%20e%20gostaria%20de%20mais%20informações."
-class="btn whatsapp show top" data-id="whatsapp">
-<div class="selo">MAIS PEDIDO</div>
+class="btn whatsapp show">
+<span class="badge">⭐ Mais solicitado</span>
 Solicitar serviço 📥
-<span>Atendimento rápido no WhatsApp • a partir de R$25</span>
+<span>Resposta rápida e atendimento direto</span>
 </a>
 
-<a href="https://www.instagram.com/duduhsofc" class="btn instagram" data-id="instagram">Instagram</a>
-<a href="https://www.tiktok.com/@kaduholanda_" class="btn tiktok" data-id="tiktok">TikTok</a>
-<a href="https://www.facebook.com/" class="btn facebook" data-id="facebook">Facebook</a>
-<a href="https://open.spotify.com/" class="btn spotify" data-id="spotify">Spotify</a>
+<a href="https://www.instagram.com/duduhsofc" class="btn instagram">Instagram</a>
+<a href="https://www.tiktok.com/@kaduholanda_" class="btn tiktok">TikTok</a>
+<a href="https://www.facebook.com/" class="btn facebook">Facebook</a>
+<a href="https://open.spotify.com/" class="btn spotify">Spotify</a>
 
 <a href="javascript:void(0)" class="btn" id="btnConheca">Conheça-me</a>
 <a href="mailto:Caduholandadesousa@gmail.com" class="btn">E-mail</a>
@@ -297,12 +290,12 @@ Solicitar serviço 📥
 </div>
 
 <script>
-/* ================= HORÁRIO + FUNDO ================= */
+/* HORÁRIO + FUNDO */
 function atualizarHorario(){
 const agora=new Date();
 const h=agora.getHours();
 const m=String(agora.getMinutes()).padStart(2,"0");
-document.getElementById("relogio").textContent=`${h}:${m} — Brasília`;
+document.getElementById("relogio").textContent=`${h}:${m} — BR`;
 
 document.body.classList.remove("manha","tarde","noite");
 if(h>=6&&h<12)document.body.classList.add("manha");
@@ -312,12 +305,12 @@ else document.body.classList.add("noite");
 setInterval(atualizarHorario,1000);
 atualizarHorario();
 
-/* ================= CASCATA ================= */
+/* ANIMAÇÃO BOTÕES */
 document.querySelectorAll('.btn:not(.whatsapp)').forEach((b,i)=>{
 setTimeout(()=>b.classList.add('show'),(i+1)*140);
 });
 
-/* ================= MODAL ================= */
+/* MODAL */
 const modal=document.getElementById("modal");
 document.getElementById("btnConheca").onclick=()=>modal.classList.add("active");
 document.getElementById("closeModal").onclick=()=>modal.classList.remove("active");
